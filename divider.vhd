@@ -17,9 +17,39 @@ overflow : out std_logic
 );
 end entity divider;
 architecture structural_combinational of divider is
-COMPONENT comparator
-END COMPONENT;
+component comparator is
+generic(
+DATA_WIDTH : natural := 4
+);
+port(
+--Inputs
+DINL : in std_logic_vector (DATA_WIDTH downto 0);
+DINR : in std_logic_vector (DATA_WIDTH - 1 downto 0);
+--Outputs
+DOUT : out std_logic_vector (DATA_WIDTH - 1 downto 0);
+isGreaterEq : out std_logic
+);
+end component comparator;
 begin
 G1: FOR i in 0 downto ((DIVIDEND_WIDTH-DIVISOR_WIDTH)-1) GENERATE
+
+	Condition_First: if i = 0 GENERATE begin
+		First: comparator
+			port map(dividend(DIVIDEND_WIDTH-1 downto DIVIDEND_WIDTH-6)<=DINL,divisor(DIVIDEND_WIDTH-1 downto DIVIDEND_WIDTH-5)<=DINR, --Remainder Signal
+			)
+	end GENERATE;
+	
+		Condition_Last: if i = ((DIVIDEND_WIDTH-DIVISOR_WIDTH)-1) GENERATE begin
+		Last: comparator
+			port map()
+	end GENERATE;
+	
+		Condition_Middle: if i > 0 AND i<((DIVIDEND_WIDTH-DIVISOR_WIDTH)-1) GENERATE begin
+		Middle: comparator
+			port map()
+	end GENERATE;
+
+
+
 END GENERATE;
 end architecture structural_combinational;
