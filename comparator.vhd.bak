@@ -7,7 +7,7 @@ use work.decoder.all;
 --Additional standard or custom libraries go here
 entity comparator is
 generic(
-DATA_WIDTH : natural := 16
+DATA_WIDTH : natural := 8
 );
 port(
 --Inputs
