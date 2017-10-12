@@ -101,7 +101,6 @@ divisor1<=std_logic_vector(to_unsigned(t2,DIVISOR_WIDTH));
 
 wait for 20 ns;
 write(oline,to_integer(unsigned(quot1)));
-writeline(outfile, oline);
 write(oline,string'(" -- "));
 write(oline,to_integer(unsigned(remain1)));
 writeline(outfile, oline);

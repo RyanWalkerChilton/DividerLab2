@@ -15,7 +15,7 @@ architecture divtest of divider_testbench is
 -----------------------------------------------------------------------------
 component comparator is
 generic(
-DATA_WIDTH : natural := 8
+DATA_WIDTH : natural := 16
 );
 port(
 --Inputs

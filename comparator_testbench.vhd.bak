@@ -15,7 +15,7 @@ architecture testbench of comparator_testbench is
 -----------------------------------------------------------------------------
 component comparator is
 generic(
-DATA_WIDTH : natural := 8
+DATA_WIDTH : natural := 16
 );
 port(
 --Inputs
@@ -31,9 +31,9 @@ end component comparator;
 -----------------------------------------------------------------------------
 --Inputs
 
-signal inp1 : std_logic_vector (8  downto 0);
-signal inp2 : std_logic_vector (7 downto 0);
-signal out1 : std_logic_vector (7 downto 0);
+signal inp1 : std_logic_vector (16  downto 0);
+signal inp2 : std_logic_vector (15 downto 0);
+signal out1 : std_logic_vector (15 downto 0);
 signal flag : std_logic;
 
 begin
@@ -41,7 +41,7 @@ begin
 -- Instantiate and Map UUT
 -----------------------------------------------------------------------------
   tb1 : comparator
-    generic map (DATA_WIDTH   => 8) --NO SEMICOLON
+    generic map (DATA_WIDTH   => 16) --NO SEMICOLON
     port map (
       DINL => inp1,
       DINR => inp2,
@@ -73,10 +73,10 @@ write(oline,t2);
 write(oline,string'("="));
 
 
-inp1<=std_logic_vector(to_unsigned(t1,9));
-inp2<=std_logic_vector(to_unsigned(t2,8));
+inp1<=std_logic_vector(to_unsigned(t1,16));
+inp2<=std_logic_vector(to_unsigned(t2,15));
 
-wait on out1;
+wait for 20 ns;
 write(oline,to_integer(unsigned(out1)));
 writeline(outfile, oline);
 end loop;
