@@ -12,22 +12,7 @@ end divider_testbench;
 architecture divtest of divider_testbench is 
 -----------------------------------------------------------------------------
 -- Declare the Component Under Test
------------------------------------------------------------------------------
-component comparator is
-generic(
-DATA_WIDTH : natural := 16
-);
-port(
---Inputs
-DINL : in std_logic_vector (DATA_WIDTH downto 0);
-DINR : in std_logic_vector (DATA_WIDTH - 1 downto 0);
---Outputs
-DOUT : out std_logic_vector (DATA_WIDTH - 1 downto 0);
-isGreaterEq : out std_logic
-);
-end component comparator;
-
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 component divider is 
 port(
@@ -50,7 +35,7 @@ end component divider;
 -- Testbench Internal Signals
 -----------------------------------------------------------------------------
 --Inputs
-signal start1 :std_logic;
+signal start1 :std_logic:='1';
 signal dividend1 :std_logic_vector (DIVIDEND_WIDTH - 1 downto 0);
 signal divisor1 :std_logic_vector (DIVISOR_WIDTH - 1 downto 0);
 signal remain1:std_logic_vector (DIVISOR_WIDTH - 1 downto 0);
@@ -72,7 +57,15 @@ begin
       
       );
 ------------------------------------------------------------------
-process is 
+P1:process is 
+begin
+start1 <= '0';
+wait for 20 ns;
+start1 <= '1';
+wait for 20 ns;
+end process P1;
+
+P2:process is 
 variable t1:integer;
 variable t2:integer;
 variable iline: line; 
@@ -81,6 +74,9 @@ file infile:text;
 file outfile:text;
 
 begin
+
+
+
 file_open(infile, "dividerIN16.in",  read_mode);
 file_open(outfile, "dividerOUT16.out", write_mode);
 
@@ -99,7 +95,7 @@ write(oline,string'("="));
 dividend1<=std_logic_vector(to_unsigned(t1,DIVIDEND_WIDTH));
 divisor1<=std_logic_vector(to_unsigned(t2,DIVISOR_WIDTH));
 
-wait for 20 ns;
+wait for 50 ns;
 write(oline,to_integer(unsigned(quot1)));
 write(oline,string'(" -- "));
 write(oline,to_integer(unsigned(remain1)));

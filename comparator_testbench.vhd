@@ -4,6 +4,7 @@ use IEEE.std_logic_1164.all;
 use ieee.std_logic_textio.all;
 use IEEE.numeric_std.all;
 use work.decoder.all;
+use work.divider_const.all;
 use std.textio.all;
 
 entity comparator_testbench is 
@@ -14,15 +15,12 @@ architecture testbench of comparator_testbench is
 -- Declare the Component Under Test
 -----------------------------------------------------------------------------
 component comparator is
-generic(
-DATA_WIDTH : natural := 16
-);
 port(
 --Inputs
-DINL : in std_logic_vector (DATA_WIDTH downto 0);
-DINR : in std_logic_vector (DATA_WIDTH - 1 downto 0);
+DINL : in std_logic_vector (DIVISOR_WIDTH downto 0);
+DINR : in std_logic_vector (DIVISOR_WIDTH - 1 downto 0);
 --Outputs
-DOUT : out std_logic_vector (DATA_WIDTH - 1 downto 0);
+DOUT : out std_logic_vector (DIVISOR_WIDTH - 1 downto 0);
 isGreaterEq : out std_logic
 );
 end component comparator;
@@ -31,9 +29,9 @@ end component comparator;
 -----------------------------------------------------------------------------
 --Inputs
 
-signal inp1 : std_logic_vector (16  downto 0);
-signal inp2 : std_logic_vector (15 downto 0);
-signal out1 : std_logic_vector (15 downto 0);
+signal inp1 : std_logic_vector (DIVISOR_WIDTH downto 0);
+signal inp2 : std_logic_vector (DIVISOR_WIDTH-1 downto 0);
+signal out1 : std_logic_vector (DIVISOR_WIDTH-1 downto 0);
 signal flag : std_logic;
 
 begin
@@ -41,7 +39,7 @@ begin
 -- Instantiate and Map UUT
 -----------------------------------------------------------------------------
   tb1 : comparator
-    generic map (DATA_WIDTH   => 16) --NO SEMICOLON
+    
     port map (
       DINL => inp1,
       DINR => inp2,
@@ -73,8 +71,8 @@ write(oline,t2);
 write(oline,string'("="));
 
 
-inp1<=std_logic_vector(to_unsigned(t1,17));
-inp2<=std_logic_vector(to_unsigned(t2,16));
+inp1<=std_logic_vector(to_unsigned(t1,DIVISOR_WIDTH+1));
+inp2<=std_logic_vector(to_unsigned(t2,DIVISOR_WIDTH));
 
 wait for 20 ns;
 write(oline,to_integer(unsigned(out1)));
