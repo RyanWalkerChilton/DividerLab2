@@ -83,6 +83,15 @@ end architecture structural_combinational;
 
 architecture behavioral_sequential of divider is
 
+signal DividendTemp:std_logic_vector( DIVIDEND_WIDTH-1 downto 0);
+signal DivisorTemp: std_logic_vector (DIVISOR_WIDTH-1 downto 0);
+signal Count: integer;
+signal remainsingle: std_logic_vector(DIVISOR_WIDTH-1 downto 0);
+signal concatsingle: std_logic_vector(DIVISOR_WIDTH downto 0);
+signal quotientfull: std_logic_vector(DIVIDEND_WIDTH-1 downto 0);
+signal quotientsingle: std_logic;
+
+
 component comparator is
 port(
 --Inputs
@@ -93,6 +102,49 @@ DOUT : out std_logic_vector (DIVISOR_WIDTH - 1 downto 0);
 isGreaterEq : out std_logic
 );
 end component comparator;
+
+begin
+Sequential_PROCESS : process (start,clk,remainsingle,dividend,divisor)
+begin
+if start='1' then
+DividendTemp<=dividend;
+DivisorTemp<=divisor;
+Count<=(DIVIDEND_WIDTH-1);
+if (rising_edge(clk)) then
+remainsingle<=remain(DIVIDEND_WIDTH-1-Count);
+quotientsingle<=quotientfull(Count);
+concatdividend(DIVIDEND_WIDTH-1-Count) <= (remain(DIVIDEND_WIDTH-1-Count)&DividendTemp(Count));
+concatsingle<=concatdividend(DIVIDEND_WIDTH-1-Count);
+--feed into comparator
+
+--feed results into signals
+
+--update signals
+Count<=Count-1;
+
+
+
+
+end if;
+
+if (to_integer(unsigned(divisor)) /= 0) then
+overflow <= '0';
+remainder <= remain(DIVIDEND_WIDTH);
+quotient <= quotientfull;
+else
+overflow <= '1';
+remainder <= std_logic_vector(to_unsigned(0, DIVISOR_WIDTH));
+quotient <= std_logic_vector(to_unsigned(0, DIVIDEND_WIDTH));
+end if;
+end if;
+end process;
+
+C1 : comparator Port Map(
+	DINL=>concatsingle,
+	DINR=>DivisorTemp,
+	DOUT=>remainsingle,
+	isGreaterEq=>quotientsingle);
+	
 
 
 
