@@ -1,4 +1,34 @@
-{C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 1/decoder.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 1/decoder.vhd}
+{C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/leddcd.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/leddcd.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity leddcd
+-- Compiling architecture data_flow of leddcd
+
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/comparator.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/comparator.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package decoder
+-- Loading package divider_const
+-- Compiling entity comparator
+-- Compiling architecture behavioral of comparator
+
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/display_divider.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/display_divider.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package decoder
+-- Loading package divider_const
+-- Compiling entity display_divider
+-- Compiling architecture structural of display_divider
+
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 1/decoder.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 1/decoder.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -7,7 +37,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling package body decoder
 -- Loading package decoder
 
-} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 2/DividerLab2-master/divider_const.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 2/DividerLab2-master/divider_const.vhd}
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/divider_const.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/divider_const.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -16,7 +46,16 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling package body divider_const
 -- Loading package divider_const
 
-} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 2/divider_testbench.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\vveej\Desktop\University\Fall 2017\EECS 355 ASIC and FPGA Design\Lab\Lab 2\divider_testbench.vhd}
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/decoder.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/decoder.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package decoder
+-- Compiling package body decoder
+-- Loading package decoder
+
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/divider_testbench.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/divider_testbench.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -28,15 +67,19 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity divider_testbench
 -- Compiling architecture divtest of divider_testbench
 
-} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 0/leddcd.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 0/leddcd.vhd}
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/comparator_testbench.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/comparator_testbench.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity leddcd
--- Compiling architecture data_flow of leddcd
+-- Loading package std_logic_textio
+-- Loading package NUMERIC_STD
+-- Loading package decoder
+-- Loading package divider_const
+-- Compiling entity comparator_testbench
+-- Compiling architecture testbench of comparator_testbench
 
-} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 2/DividerLab2-master/divider.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\vveej\Desktop\University\Fall 2017\EECS 355 ASIC and FPGA Design\Lab\Lab 2\DividerLab2-master\divider.vhd}
+} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/divider.vhd} {0 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/divider.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -45,24 +88,8 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package NUMERIC_STD
 -- Compiling entity divider
 -- Compiling architecture structural_combinational of divider
+-- Compiling architecture behavioral_sequential of divider
+-- Loading entity divider
+** Error: C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 3/divider.vhd(109): near "if": syntax error
 
-} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 2/display_divider.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 2/display_divider.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package decoder
--- Compiling entity display_divider
--- Compiling architecture structural of display_divider
-
-} {} {}} {C:/Users/vveej/Desktop/University/Fall 2017/EECS 355 ASIC and FPGA Design/Lab/Lab 2/comparator.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\vveej\Desktop\University\Fall 2017\EECS 355 ASIC and FPGA Design\Lab\Lab 2\comparator.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package decoder
--- Compiling entity comparator
--- Compiling architecture behavioral of comparator
-
-} {} {}}
+} {12.0 13.0} {}}
