@@ -94,27 +94,6 @@ isGreaterEq : out std_logic
 );
 end component comparator;
 
-signal quot :std_logic_vector (DIVIDEND_WIDTH - 1 downto 0);
-type arrayconcat is array (0 to DIVIDEND_WIDTH-1) of std_logic_vector(DIVISOR_WIDTH downto 0);
-signal concatdividend: arrayconcat;
-type remainarray is array (0 to DIVIDEND_WIDTH) of std_logic_vector(DIVISOR_WIDTH-1 downto 0);
-signal remain: remainarray; --:= (others=>'0');
-
-begin 
-remain(0)<= (others=>'0');
-
-G1: FOR i in (DIVIDEND_WIDTH-1) downto 0 GENERATE    
-begin
-process(clk)
-if (rising_edge(clk)) then
-concatdividend(DIVIDEND_WIDTH-1-i) <= (remain(DIVIDEND_WIDTH-1-i)&dividend(i));
-C1: comparator 
-port map(concatdividend(DIVIDEND_WIDTH-1-i),divisor, remain(DIVIDEND_WIDTH-i), quot(i)
-	);
-end if;
-end process;  
-end GENERATE ;
-
 
 
 end architecture; 
