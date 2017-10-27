@@ -17,7 +17,7 @@ architecture divtest of divider_testbench is
 component divider is 
 port(
 --Inputs
--- clk : in std_logic;
+clk : in std_logic;
 --COMMENT OUT clk signal for Part A.
 start : in std_logic;
 dividend : in std_logic_vector (DIVIDEND_WIDTH - 1 downto 0);
@@ -36,6 +36,7 @@ end component divider;
 -----------------------------------------------------------------------------
 --Inputs
 signal start1 :std_logic:='1';
+signal clock  : std_logic:='0';
 signal dividend1 :std_logic_vector (DIVIDEND_WIDTH - 1 downto 0);
 signal divisor1 :std_logic_vector (DIVISOR_WIDTH - 1 downto 0);
 signal remain1:std_logic_vector (DIVISOR_WIDTH - 1 downto 0);
@@ -48,6 +49,7 @@ begin
 -----------------------------------------------------------------------------
   tb1 : divider
     port map (
+      clk=>clock,
       start =>start1,
       dividend => dividend1,
       divisor => divisor1,
@@ -59,10 +61,16 @@ begin
 ------------------------------------------------------------------
 P1:process is 
 begin
-start1 <= '0';
-wait for 20 ns;
 start1 <= '1';
-wait for 20 ns;
+
+clock  <= '0'; 
+wait for 10ns; 
+clock <= '1'; 
+wait for 10ns; 
+
+--wait for 20 ns;
+--start1 <= '1';
+
 end process P1;
 
 P2:process is 
@@ -77,8 +85,13 @@ begin
 
 
 
-file_open(infile, "dividerIN16.in",  read_mode);
-file_open(outfile, "dividerOUT16.out", write_mode);
+file_open(infile, "Lab3Divider16In.in",  read_mode);
+file_open(outfile, "Lab3Divider16Out.out", write_mode);
+
+--file_open(infile, "Lab3Divider32In.in",  read_mode);
+--file_open(outfile, "Lab3Divider32Out.out", write_mode);
+
+
 
 while not(endfile(infile)) loop
 readline(infile,iline);
@@ -95,7 +108,7 @@ write(oline,string'("="));
 dividend1<=std_logic_vector(to_unsigned(t1,DIVIDEND_WIDTH));
 divisor1<=std_logic_vector(to_unsigned(t2,DIVISOR_WIDTH));
 
-wait for 50 ns;
+wait for 10 ns;
 write(oline,to_integer(unsigned(quot1)));
 write(oline,string'(" -- "));
 write(oline,to_integer(unsigned(remain1)));
