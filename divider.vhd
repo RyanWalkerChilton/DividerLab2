@@ -25,9 +25,14 @@ end entity divider;
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 architecture FSMbehavior of divider is 
-signal sigdivisor: std_logic_vector(DIVISOR_WIDTH-1 downto 0); 
-signal sigdividend: std_logic_vector(DIVIDEND_WIDTH -1 downto 0); 
-
+signal a: std_logic_vector(DIVISOR_WIDTH-1 downto 0); 
+signal b: std_logic_vector(DIVIDEND_WIDTH-1 downto 0); 
+signal state: std_logic_vector(2 downto 0) := "000";
+signal next_state: std_logic_vector(2 downto 0) := "000";
+signal p: integer;
+signal c: std_logic_vector(DIVIDEND_WIDTH-1 downto 0);
+signal q: std_logic_vector(DIVIDEND_WIDTH-1 downto 0);
+signal sign: std_logic;
 
 function get_msb_pos(signal data: std_logic_vector) 
 return integer is 
@@ -37,7 +42,7 @@ begin
 for i in data'low to data'high loop
 if (data(31-i) ='1') then
 count:=31-i; 
-exit ; 
+exit; 
 end if;
 end loop; 
 
@@ -53,8 +58,8 @@ begin
    if (rising_edge(clk)) then
        if start = '1' then
           overflow<='0';
-	  sigdivisor <= divisor;
-          sigdividend <= dividend; 
+			 a <= abs(divisor);
+          b <= abs(dividend); 
         else 
           overflow<='1';         
 	  end if;
@@ -70,6 +75,55 @@ overflow <= '1';
 end if;
 end process;
 
+statelogic: process (state) is
+begin
+case state is
+	when "000" =>
+	if (b /= 0 and b < a) then
+		next_state <= "001";
+	else
+		next_state <= "100";
+	end if;
+	when "001" =>
+	p <= get_msb_pos(a) - get_msb_pos(b);
+	c <= b sll p;
+	if (c>a) then
+		next_state <= "010";
+	else
+		next_state <= "011";
+	end if;
+	when "010" => 
+	p <= p-1;
+	c <= b sll p;
+	next_state <= "011";
+	when "011" =>
+	q <= q+(1 sll p);
+	a <= a - (b sll p);
+	next_state <= "000";
+	when "100" =>
+	sign <= (dividend sra (DIVIDEND_WIDTH-1)) xor (divisor sra (DIVISOR_WIDTH-1));
+	if sign = 1 then
+	quotient <= q;
+	else
+	quotient <= -q;
+	end if;
+	if (dividend sra (DIVIDEND_WIDTH-1)) = 1 then
+	remainder <= -a;
+	else
+	remainder <= a;
+	end if;
+end case;
+end process statelogic;
+
+Statereg: process (clk, reset) is
+begin
+if rising_edge(clk) then
+	state <= next_state;
+elsif (reset = 1) then
+	state <= "000";
+	next_state <= "000";
+end if;
+end process Statereg;
 
 
 
